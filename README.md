@@ -49,7 +49,7 @@ This process initialize infrastructure apps (Ingress Controller).
 ```bash
 (~) $ cd 03-apps
 
-(~/02-system)$ kubectl apply -f example-app.yml
+(~/03-apps)$ kubectl apply -f example-app.yml
 ```
 
 
