@@ -1,23 +1,27 @@
 # Doks with Terraform
 
-Codebase to create a DOKS cluster with terraform:
+Codebase to create a simple DOKS cluster with terraform:
 
-- Generate your Access Token
-  - https://docs.digitalocean.com/reference/api/create-personal-access-token/
+## Requirements:
+
+- [Generate your Access Token to Digital Ocean](https://docs.digitalocean.com/reference/api/create-personal-access-token/)
+- [Terraform](https://www.terraform.io/downloads.html)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/)
+- (Optional) [Digital Ocean CLI - doctl](https://github.com/digitalocean/doctl/releases)
 
 ## Create Digital Ocean Cluster
 
 This process initialize Digital Ocean kubernetes cluster with node pools.
 
 ```bash
-(~) $ cd cluster
+(~) $ cd 01-cluster
 
-(~/cluster)$ terraform init
-(~/cluster)$ cp terraform.tfvars.example terraform.tfvars
+(~/01-cluster)$ terraform init
+(~/01-cluster)$ cp terraform.tfvars.example terraform.tfvars
 
 # Edit do_token inside terraform.tfvars
 
-(~/cluster)$ terraform apply
+(~/01-cluster)$ terraform apply
 
 ```
 
@@ -25,18 +29,33 @@ This process initialize Digital Ocean kubernetes cluster with node pools.
 
 https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/#doctl
 
-## Create Infra Apps
+## Create System configurations
 
 This process initialize infrastructure apps (Ingress Controller).
 
 ```bash
-(~) $ cd infra-apps
+(~) $ cd 02-system
 
-(~/infra-apps)$ terraform init
-(~/infra-apps)$ cp terraform.tfvars.example terraform.tfvars
-(~/infra-apps)$ terraform apply
+(~/02-system)$ terraform init
+(~/02-system)$ cp terraform.tfvars.example terraform.tfvars
+(~/02-system)$ terraform apply
 
 ```
+
+## Create System configurations
+
+This process initialize infrastructure apps (Ingress Controller).
+
+```bash
+(~) $ cd 03-apps
+
+(~/02-system)$ kubectl apply -f example-app.yml
+```
+
+
+## Probably TODO
+
+- Create firewall inside process.
 
 ## References:
 
