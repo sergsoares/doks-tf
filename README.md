@@ -1,24 +1,42 @@
 # Doks with Terraform
 
-Application to be user to create a DOKS cluster with terraform:
+Codebase to create a DOKS cluster with terraform:
 
 - Generate your Access Token
   - https://docs.digitalocean.com/reference/api/create-personal-access-token/
 
+## Create Digital Ocean Cluster
 
-- Create DO Cluster
-  - terraform init
-  - cd cluster
-  - terraform apply -auto-approve
+This process initialize Digital Ocean kubernetes cluster with node pools.
 
-- Create Infra Apps
-  - terraform init 
-  - cd cluster
-  - terraform apply -auto-approve
+```bash
+(~) $ cd cluster
 
-- Create Apps
-  - kubectl apply -f
+(~/cluster)$ terraform init
+(~/cluster)$ cp terraform.tfvars.example terraform.tfvars
 
+# Edit do_token inside terraform.tfvars
+
+(~/cluster)$ terraform apply
+
+```
+
+### Download your kubeconfig file
+
+https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/#doctl
+
+## Create Infra Apps
+
+This process initialize infrastructure apps (Ingress Controller).
+
+```bash
+(~) $ cd infra-apps
+
+(~/infra-apps)$ terraform init
+(~/infra-apps)$ cp terraform.tfvars.example terraform.tfvars
+(~/infra-apps)$ terraform apply
+
+```
 
 ## References:
 
