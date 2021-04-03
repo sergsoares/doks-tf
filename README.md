@@ -1,6 +1,6 @@
 # Doks with Terraform
 
-Codebase to create a simple DOKS cluster with terraform and :
+Codebase to create a simple DOKS cluster with terraform and Nginx Ingress Controller:
 
 ## Requirements:
 
@@ -11,7 +11,7 @@ Codebase to create a simple DOKS cluster with terraform and :
 
 ## Create Digital Ocean Cluster
 
-This process initialize Digital Ocean kubernetes cluster with node pools.
+This process initialize Digital Ocean kubernetes cluster with node pools and deploy Nginx Ingress controller.
 
 ```bash
 (~) $ terraform init
