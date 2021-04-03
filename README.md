@@ -1,61 +1,43 @@
 # Doks with Terraform
 
-Codebase to create a simple DOKS cluster with terraform:
+Codebase to create a simple DOKS cluster with terraform and :
 
 ## Requirements:
 
 - [Generate your Access Token to Digital Ocean](https://docs.digitalocean.com/reference/api/create-personal-access-token/)
 - [Terraform](https://www.terraform.io/downloads.html)
-- [Kubectl](https://kubernetes.io/docs/tasks/tools/)
-- (Optional) [Digital Ocean CLI - doctl](https://github.com/digitalocean/doctl/releases)
+- (Optional)[Digital Ocean CLI - doctl](https://github.com/digitalocean/doctl/releases)
+- (Optional)[Kubectl](https://kubernetes.io/docs/tasks/tools/)
 
 ## Create Digital Ocean Cluster
 
 This process initialize Digital Ocean kubernetes cluster with node pools.
 
 ```bash
-(~) $ cd 01-cluster
-
-(~/01-cluster)$ terraform init
-(~/01-cluster)$ cp terraform.tfvars.example terraform.tfvars
+(~) $ terraform init
+(~) $ cp terraform.tfvars.example terraform.tfvars
 
 # Edit do_token inside terraform.tfvars
 
-(~/01-cluster)$ terraform apply
-
+(~) $ terraform apply
 ```
 
-### Download your kubeconfig file
+#### Get IP from load balancer created by Nginx Ingress
 
-https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/#doctl
+Waiting terraform finish and open [Load Balance Console](https://cloud.digitalocean.com/networking/load_balancers?i=37a503&preserveScrollPosition=true) to get LB IP.
 
-## Create System configurations
+#### Download your kubeconfig file to deploy apps
 
-This process initialize infrastructure apps (Ingress Controller).
+Follow Digital ocean instructions to get your [kubeconfig](https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/#doctl) an interact with cluster, recommended [Lens - K8S IDE](https://k8slens.dev/).
 
-```bash
-(~) $ cd 02-system
+## TODO
 
-(~/02-system)$ terraform init
-(~/02-system)$ cp terraform.tfvars.example terraform.tfvars
-(~/02-system)$ terraform apply
+- Create specific firewall inside process.
+- An apps folder to maintain all manifests inside same repo.
 
-```
+## Knowledge issues
 
-## Create System configurations
-
-This process initialize infrastructure apps (Ingress Controller).
-
-```bash
-(~) $ cd 03-apps
-
-(~/03-apps)$ kubectl apply -f example-app.yml
-```
-
-
-## Probably TODO
-
-- Create firewall inside process.
+- Terraform Destroy stuck in a invalid state because delete cluster before Nginx ingress not destroying Loadbalancer created, need enter in [Load Balance Console](https://cloud.digitalocean.com/networking/load_balancers?i=37a503&preserveScrollPosition=true) and finish.
 
 ## References:
 
