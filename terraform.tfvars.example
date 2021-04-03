@@ -9,7 +9,7 @@ default_node_pool_name="default-pool"
 default_node_pool_size="s-1vcpu-2gb" # minimum size, list available options with `doctl compute size list`
 
 default_node_pool_auto_scale=false
-default_node_pool_count=2
+default_node_pool_count=3
 
 default_node_pool_tags = ["node-pool-tag"]
 default_node_pool_labels = {}

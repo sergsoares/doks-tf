@@ -52,5 +52,3 @@ variable "default_node_pool_labels" {
   type = map(string)
   description = "Default Node Pool labels"
 }
-
-

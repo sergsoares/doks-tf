@@ -1,0 +1,15 @@
+variable "host" {
+  type = string
+  description = "Kubernetes Cluster name"
+}
+
+variable "cluster_ca_certificate" {
+  type = string
+  description = "Kubernetes Cluster name"
+}
+
+variable "token" {
+  type = string
+  description = "Kubernetes Cluster name"
+}
+
