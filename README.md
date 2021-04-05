@@ -36,7 +36,7 @@ doctl is the official DigitalOcean command line interface (CLI).
 
 ```bash
 
-(~) $ doctl kubernetes cluster registry add <your-cluster-name>
+(~) $ kubernetes cluster kubeconfig save <your-cluster-name>
 
 ```
 
