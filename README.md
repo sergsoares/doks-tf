@@ -14,10 +14,12 @@ Codebase to create a simple DOKS cluster with terraform and Nginx Ingress Contro
 This process initialize Digital Ocean kubernetes cluster with node pools and deploy Nginx Ingress controller.
 
 ```bash
+
+# Generate your access token here: https://cloud.digitalocean.com/account/api/tokens
+# Edit do_token inside terraform.tfvars
+
 (~) $ terraform init
 (~) $ cp terraform.tfvars.example terraform.tfvars
-
-# Edit do_token inside terraform.tfvars
 
 (~) $ terraform apply
 ```
@@ -27,6 +29,16 @@ This process initialize Digital Ocean kubernetes cluster with node pools and dep
 Waiting terraform finish and open [Load Balance Console](https://cloud.digitalocean.com/networking/load_balancers?i=37a503&preserveScrollPosition=true) to get LB IP.
 
 #### Download your kubeconfig file to deploy apps
+
+After completion, add the k8s settings made in DO to your .kube/config.
+We use the [**doctl**](https://docs.digitalocean.com/reference/doctl/how-to/install/)
+doctl is the official DigitalOcean command line interface (CLI).
+
+```bash
+
+(~) $ kubernetes cluster kubeconfig save <your-cluster-name>
+
+```
 
 Follow Digital ocean instructions to get your [kubeconfig](https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/#doctl) an interact with cluster, recommended [Lens - K8S IDE](https://k8slens.dev/).
 
